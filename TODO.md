@@ -11,6 +11,7 @@
 
 - TransactionManager
 - UserManager
+- SessionManager
 
 ## Database
 
@@ -28,3 +29,8 @@
 - id (Primary Key)
 - name
 - password_hash
+
+### Session
+
+- id (Primary Key)
+- user_id (Foreign Key)
