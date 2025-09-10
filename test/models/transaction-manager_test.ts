@@ -64,4 +64,21 @@ describe("getAllTransactions", () => {
     assert(transactions.length === 2);
     assertEquals(transactions, [transaction1, transaction2]);
   });
+
+  it("should return transactions only for the specified user", async () => {
+    const transactionManager = new TransactionManager(transactionCollection);
+    const userId1 = "user-1";
+    const userId2 = "user-2";
+
+    const transaction1 = createTransaction(userId1, 100);
+    const transaction2 = createTransaction(userId2, 200);
+
+    await transactionCollection.insertMany([transaction1, transaction2]);
+
+    const transactions = await transactionManager.getAllTransactions(userId1);
+
+    assert(Array.isArray(transactions));
+    assert(transactions.length === 1);
+    assertEquals(transactions, [transaction1]);
+  });
 });
