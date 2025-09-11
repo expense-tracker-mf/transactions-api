@@ -1,3 +1,5 @@
+import TransactionManager from "./models/transaction-manager.ts";
+
 interface Transaction {
   userId: string;
   amount: number;
@@ -6,4 +8,12 @@ interface Transaction {
   createdAt: Date;
 }
 
-export type { Transaction };
+interface AppContext {
+  transactionManager: TransactionManager;
+}
+
+interface AppVariables {
+  transactionManager: TransactionManager;
+}
+
+export type { Transaction, AppContext, AppVariables };

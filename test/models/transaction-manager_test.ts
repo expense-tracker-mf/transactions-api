@@ -1,5 +1,4 @@
 import { afterEach, beforeEach, describe, it } from "@std/testing/bdd";
-import { stub } from "@std/testing/mock";
 import { Collection, MongoClient } from "mongodb";
 import { Transaction } from "../../src/types.ts";
 import TransactionManager from "../../src/models/transaction-manager.ts";
