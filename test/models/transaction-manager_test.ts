@@ -21,7 +21,7 @@ afterEach(async () => {
   await client.close();
 });
 
-const createTransaction = (userId: string, amount: number): Transaction => {
+const createTransaction = (userId: number, amount: number): Transaction => {
   return {
     createdAt: new Date(),
     category: "general",
@@ -41,7 +41,7 @@ describe("init", () => {
 describe("getAllTransactions", () => {
   it("should return empty array when there are no transactions", async () => {
     const transactionManager = new TransactionManager(transactionCollection);
-    const userId = "user-1";
+    const userId = 0;
     const transactions = await transactionManager.getAllTransactions(userId);
 
     assert(Array.isArray(transactions));
@@ -50,7 +50,7 @@ describe("getAllTransactions", () => {
 
   it("should return all transactions for a user", async () => {
     const transactionManager = new TransactionManager(transactionCollection);
-    const userId = "user-1";
+    const userId = 0;
 
     const transaction1 = createTransaction(userId, 100);
     const transaction2 = createTransaction(userId, 200);
@@ -66,8 +66,8 @@ describe("getAllTransactions", () => {
 
   it("should return transactions only for the specified user", async () => {
     const transactionManager = new TransactionManager(transactionCollection);
-    const userId1 = "user-1";
-    const userId2 = "user-2";
+    const userId1 = 0;
+    const userId2 = 1;
 
     const transaction1 = createTransaction(userId1, 100);
     const transaction2 = createTransaction(userId2, 200);

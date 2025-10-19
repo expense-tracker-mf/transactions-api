@@ -1,7 +1,8 @@
+import { SessionManager } from "./models/session-manager.ts";
 import TransactionManager from "./models/transaction-manager.ts";
 
 interface Transaction {
-  userId: string;
+  userId: number;
   amount: number;
   description?: string;
   category: string;
@@ -10,10 +11,24 @@ interface Transaction {
 
 interface AppContext {
   transactionManager: TransactionManager;
+  sessionManager: SessionManager;
 }
 
 interface AppVariables {
   transactionManager: TransactionManager;
+  sessionManager: SessionManager;
+  userId: number;
 }
 
-export type { Transaction, AppContext, AppVariables };
+interface User {
+  user_id: number;
+  username: string;
+  password: string;
+}
+
+interface Session {
+  session_id: number;
+  user_id: number;
+}
+
+export type { Transaction, AppContext, AppVariables, User, Session };

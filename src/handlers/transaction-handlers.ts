@@ -5,7 +5,8 @@ const serveAllTransactions = async (
   ctx: Context<{ Variables: AppVariables }>
 ) => {
   const transactionManager = ctx.get("transactionManager");
-  const transactions = await transactionManager.getAllTransactions("user-1");
+  const userId = ctx.get("userId");
+  const transactions = await transactionManager.getAllTransactions(userId);
 
   return ctx.json(transactions);
 };
